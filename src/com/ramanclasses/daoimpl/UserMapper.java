@@ -12,9 +12,9 @@ public class UserMapper implements RowMapper {
 		public Object mapRow(ResultSet rs, int rownum) throws SQLException {
 			// TODO Auto-generated method stub
 			Long userId = Long.valueOf(rs.getLong("U_ID"));
-			String userName = rs.getString("U_EMAIL");
-			String userPass = rs.getString("U_PASSWORD");
-			String userType = rs.getString("U_TYPE");
+			String userName = rs.getString("EMAIL");
+			String userPass = rs.getString("PASSWORD");
+			String userType = rs.getString("USERTYPE");
 			
 			User model = new User();
 			model.setId(userId);

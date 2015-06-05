@@ -39,10 +39,10 @@ public class LoginController implements Controller {
         pass = Util.covertToMd5(pass);
         try{
         	User user = commonDao.getUser(email,pass);
-        	
-        	if(user.getType()==Constants.ADMIN){	
+        	String userType = user.getType();
+        	if(userType.equals(Constants.ADMIN)){	
         		modelandview = new ModelAndView("admin_home");
-        		 Util.setParameters(modelandview,userdetail);
+        		// Util.setParameters(modelandview,userdetail);
         		 return modelandview;
         	}
         	else if(user.getType() == Constants.STUDENT){
