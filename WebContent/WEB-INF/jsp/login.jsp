@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title>Login</title>
-		<link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet">
+		<link href="${pageContext.request.contextPath}/resources/mycss/style.css" rel="stylesheet">
 	</head>
 	<body>
 		<div class='form animated flipInX'>
