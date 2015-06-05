@@ -8,5 +8,8 @@ public class Constants {
 	public static final String ADMIN = "admin";
 	public static final String USERNAME = "username";
 	public static final String ACTIVE_FROM = "activefrom";
+	public static final String NAME = "name";
+	public static final String USER_TYPE = "usertype";
+	
 }
 

@@ -28,10 +28,22 @@ public class Util {
 
 	public static void setParameters(ModelAndView modelandview,UserDetail userdetail) {
 		// TODO Auto-generated method stub
-		modelandview.addObject(Constants.TITLE, "Raman Classes");
-		modelandview.addObject(Constants.USERNAME,userdetail.getUsername());
-		modelandview.addObject(Constants.ACTIVE_FROM,userdetail.getActiveFrom());
-		
+		if(userdetail!=null){
+			modelandview.addObject(Constants.TITLE, "Raman Classes");
+			modelandview.addObject(Constants.USERNAME,userdetail.getUsername());
+			modelandview.addObject(Constants.ACTIVE_FROM,userdetail.getActiveFrom());
+			modelandview.addObject(Constants.NAME,userdetail.getName());
+			modelandview.addObject(Constants.USER_TYPE,userdetail.getUserType());
+
+		}
+		else{
+			modelandview.addObject(Constants.TITLE, "Raman Classes");
+			modelandview.addObject(Constants.USERNAME,"Admin");
+			modelandview.addObject(Constants.ACTIVE_FROM,"Unknown");
+			modelandview.addObject(Constants.NAME,"Your Name");
+			modelandview.addObject(Constants.USER_TYPE,"Admin");
+
+		}
 	}
 
 	

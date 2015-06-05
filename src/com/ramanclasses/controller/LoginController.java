@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import com.ramanclasses.dao.CommonDao;
+import com.ramanclasses.daoimpl.AdminDaoImpl;
 import com.ramanclasses.daoimpl.CommonDaoImpl;
 import com.ramanclasses.daoimpl.User;
 import com.ramanclasses.daoimpl.UserDetail;
@@ -22,7 +23,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class LoginController implements Controller {
 
-    private UserDetail userdetail;
+    private UserDetail userDetail;
    
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, NoSuchAlgorithmException {
@@ -32,6 +33,8 @@ public class LoginController implements Controller {
     	    		new ClassPathXmlApplicationContext("Beans.xml");
     	    	 
     	CommonDaoImpl commonDao = (CommonDaoImpl) context.getBean("commonDao");
+    	AdminDaoImpl adminDao = (AdminDaoImpl) context.getBean("adminDao");
+    	
     	
         String email = request.getParameter("email");
         String pass = request.getParameter("pass");
@@ -41,9 +44,10 @@ public class LoginController implements Controller {
         	User user = commonDao.getUser(email,pass);
         	String userType = user.getType();
         	if(userType.equals(Constants.ADMIN)){	
+        		userDetail = adminDao.getUserDetail(user.getEmail());
         		modelandview = new ModelAndView("admin_home");
-        		// Util.setParameters(modelandview,userdetail);
-        		 return modelandview;
+        		Util.setParameters(modelandview,userDetail);
+        		return modelandview;
         	}
         	else if(user.getType() == Constants.STUDENT){
         		 modelandview =new ModelAndView("student_home");
