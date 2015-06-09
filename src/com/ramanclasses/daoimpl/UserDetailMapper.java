@@ -11,17 +11,23 @@ public class UserDetailMapper implements RowMapper {
 	public Object mapRow(ResultSet rs, int rownum) throws SQLException {
 		// TODO Auto-generated method stub
 		//Long userId = Long.valueOf(rs.getLong("U_ID"));
-		String userName = rs.getString("EMAIL");
+		String userName = rs.getString("username");
 		String name = rs.getString("NAME");
 		String userType = rs.getString("USERTYPE");
-		String activeFrom = rs.getString("ACTIVEFROM");
+		String activeFrom = rs.getString("ACTIVE_FROM");
+		String lastLogin = rs.getString("LAST_LOGIN");
+		String email = rs.getString("EMAIL");
+		
 		
 		UserDetail model = new UserDetail();
 		model.setUsername(userName);
 		model.setName(name);
 		model.setUserType(userType);
 		model.setActiveFrom(activeFrom);
-		return null;
+		model.setEmail(email);
+		model.setLastLogin(lastLogin);
+		
+		return model;
 	}
 
 }

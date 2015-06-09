@@ -34,7 +34,8 @@ public class Util {
 			modelandview.addObject(Constants.ACTIVE_FROM,userdetail.getActiveFrom());
 			modelandview.addObject(Constants.NAME,userdetail.getName());
 			modelandview.addObject(Constants.USER_TYPE,userdetail.getUserType());
-
+			modelandview.addObject(Constants.LAST_LOGIN,userdetail.getLastLogin());
+			modelandview.addObject(Constants.EMAIL,userdetail.getEmail());
 		}
 		else{
 			modelandview.addObject(Constants.TITLE, "Raman Classes");
@@ -42,7 +43,8 @@ public class Util {
 			modelandview.addObject(Constants.ACTIVE_FROM,"Unknown");
 			modelandview.addObject(Constants.NAME,"Your Name");
 			modelandview.addObject(Constants.USER_TYPE,"Admin");
-
+			modelandview.addObject(Constants.LAST_LOGIN,Constants.LAST_LOGIN);
+			modelandview.addObject(Constants.EMAIL,Constants.EMAIL);
 		}
 	}
 

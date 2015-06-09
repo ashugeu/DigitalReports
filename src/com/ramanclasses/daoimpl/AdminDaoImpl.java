@@ -13,7 +13,7 @@ public class AdminDaoImpl extends SimpleJdbcDaoSupport implements AdminDao{
 	public UserDetail getUserDetail(String email) {
 		// TODO Auto-generated method stub
 		Object [] params = new Object [] {email};
-		int [] types = new int [] {Types.INTEGER} ;
+		int [] types = new int [] {Types.VARCHAR} ;
 		
 		UserDetail userDetail=null;
 		

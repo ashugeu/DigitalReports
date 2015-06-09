@@ -6,8 +6,25 @@ public class UserDetail {
 		private String userType;
 		private String name;
 		private String activeFrom;
+		private String lastLogin;
+		private String email;
 		
-		
+		public String getEmail() {
+			return email;
+		}
+
+		public void setEmail(String email) {
+			this.email = email;
+		}
+
+		public String getLastLogin() {
+			return lastLogin;
+		}
+
+		public void setLastLogin(String lastLogin) {
+			this.lastLogin = lastLogin;
+		}
+
 		public String getActiveFrom() {
 			return activeFrom;
 		}

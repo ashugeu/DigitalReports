@@ -38,15 +38,22 @@ public class LoginController implements Controller {
     	
         String email = request.getParameter("email");
         String pass = request.getParameter("pass");
-        ModelAndView modelandview;
         pass = Util.covertToMd5(pass);
+        ModelAndView modelandview;
         try{
-        	User user = commonDao.getUser(email,pass);
+        	Boolean userExists = commonDao.isUserExists(email, pass);
+        	if(userExists==false){
+        		modelandview = new ModelAndView("login_failed");
+        		modelandview.addObject(Constants.WRONG_USERNAME_PASSWORD, userExists);
+        		return modelandview;
+        	}
+        	User user = commonDao.getUser(email);
         	String userType = user.getType();
         	if(userType.equals(Constants.ADMIN)){	
         		userDetail = adminDao.getUserDetail(user.getEmail());
         		modelandview = new ModelAndView("admin_home");
         		Util.setParameters(modelandview,userDetail);
+        		//commonDao.setLastLogin(user.getId());
         		return modelandview;
         	}
         	else if(user.getType() == Constants.STUDENT){

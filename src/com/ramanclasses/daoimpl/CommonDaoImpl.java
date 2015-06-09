@@ -2,6 +2,8 @@ package com.ramanclasses.daoimpl;
 
 
 import java.sql.Types;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import org.springframework.jdbc.core.simple.SimpleJdbcDaoSupport;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
@@ -17,16 +19,16 @@ public class CommonDaoImpl extends SimpleJdbcDaoSupport implements CommonDao{
 		
     
 	@Override
-	public User getUser(String email, String password) {
+	public Boolean isUserExists(String email, String password) {
 		// TODO Auto-generated method stub
 		Object [] params = new Object [] {email,password};
 		int [] types = new int [] {Types.VARCHAR,Types.VARCHAR} ;
 		
-		User user=null;
-		
+		//User user=null;
+		Boolean user=false;
 		try
 		{
-			user = (User)getJdbcTemplate().queryForObject(UserSql.FIND_USER_EXIST, params, types, new UserMapper());
+			user = (Boolean)getJdbcTemplate().queryForObject(UserSql.FIND_USER_EXIST, params, types, Boolean.class);
 		}catch(Exception e)
 		{
 			System.out.println(e.getMessage());
@@ -69,6 +71,39 @@ public class CommonDaoImpl extends SimpleJdbcDaoSupport implements CommonDao{
 		}
 	
 		return userId;
+	}
+
+	@Override
+	public User getUser(String email) {
+		// TODO Auto-generated method stub
+		Object [] params = new Object [] {email};
+		int [] types = new int [] {Types.VARCHAR};
+		
+		User user=null;
+		try
+		{
+			user = (User)getJdbcTemplate().queryForObject(UserSql.GET_USER, params, types, new UserMapper());
+		}catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+		}
+		
+		return user;
+	}
+
+	public void setLastLogin(Long id) {
+		// TODO Auto-generated method stub
+		String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+		Object [] params = new Object [] {timestamp,id};
+		int [] types = new int [] {Types.VARCHAR,Types.NUMERIC};
+		
+		try
+		{
+			getJdbcTemplate().update(UserSql.UPADTE_LAST_LOGIN,params,types);
+		}catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+		}
 	}
 
 
