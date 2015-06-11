@@ -20,6 +20,8 @@ email VARCHAR(50) NOT NULL,
 name VARCHAR(30) NOT NULL,
 usertype VARCHAR(30) NOT NULL,
 active_from TIMESTAMP,
+last_login TIMESTAMP,
+username varchar(30),
 FOREIGN KEY (u_id)
         REFERENCES users(u_id)
         ON DELETE CASCADE
