@@ -20,6 +20,10 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 	<bean id="adminDao" class="com.ramanclasses.daoimpl.AdminDaoImpl">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
+	
+	<bean id="statBoxDao" class="com.ramanclasses.daoimpl.StatBoxDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
       
       <bean id="transactionManager" 
           class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

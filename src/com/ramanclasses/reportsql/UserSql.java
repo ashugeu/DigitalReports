@@ -10,4 +10,6 @@ public interface UserSql {
 		public static final String GET_USER_DETAILS = "select * from userdetails where email=?";
 		public static final String UPADTE_LAST_LOGIN = "update userdetails set last_login=? where u_id=?";
 		public static final String GET_USER = "select * from users where email=?";
+		public static final String GET_STAT_BOX = "select * from statbox where u_id=?";
+		public static final String COUNT_TOTAL_STUDENTS = "select count(distinct(u_id)) from users";
 }

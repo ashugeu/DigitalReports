@@ -14,6 +14,8 @@ public class Constants {
 	public static final String EMAIL = "email";
 	public static final String USER_LOGGED_IN = "userLoggedIn";
 	public static final String WRONG_USERNAME_PASSWORD = "wrongUserPass";
+	public static final String COUNT = "count";
+	public static final String REGISTRED_USERS = "registredStudents";
 	
 }
 
