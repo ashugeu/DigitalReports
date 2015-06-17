@@ -26,7 +26,7 @@ public class LoginController implements Controller {
 
     private UserDetail userDetail;
     private List<StatBox> statBox;
-    ModelAndView modelandview;
+    private ModelAndView modelandview;
     
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, NoSuchAlgorithmException {
@@ -69,6 +69,7 @@ public class LoginController implements Controller {
     	userDetail = AdminServiceImpl.getUserDetail(user.getEmail());
 		statBox = (List<StatBox>) StatBoxServiceImpl.getStatBoxDetails(user.getId());
 		modelandview = new ModelAndView("admin_home");
+		modelandview.addObject(Constants.USER,user.getId());
 		Util.setParameters(modelandview,userDetail);
 		Util.setStatBoxParameters(modelandview, statBox);
 		//commonDao.setLastLogin(user.getId());

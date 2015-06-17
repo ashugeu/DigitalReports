@@ -36,6 +36,12 @@
               </ul>
             </li>
             <li class="treeview">
+              <a href="addStudent.htm?user=${user}">
+                <i class="fa fa-plus-square"></i>
+                <span>Add New Student</span>
+              </a>
+            </li>
+            <li class="treeview">
               <a href="#">
                 <i class="fa fa-files-o"></i>
                 <span>Layout Options</span>

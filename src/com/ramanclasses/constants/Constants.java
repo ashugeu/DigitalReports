@@ -17,6 +17,8 @@ public class Constants {
 	public static final String COUNT = "count";
 	public static final String REGISTRED_USERS = "registredStudents";
 	public static final String FALSE = "false";
+	public static final String STUDENT_FORM_FIELDS = "studentFormFields";
+	public static final String USER = "user";
 	
 }
 
