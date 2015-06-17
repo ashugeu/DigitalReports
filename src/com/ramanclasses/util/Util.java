@@ -3,17 +3,13 @@ package com.ramanclasses.util;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
-import java.util.Map;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ramanclasses.constants.Constants;
-import com.ramanclasses.dao.StatBoxDao;
 import com.ramanclasses.daoimpl.StatBox;
-import com.ramanclasses.daoimpl.StatBoxDaoImpl;
 import com.ramanclasses.daoimpl.UserDetail;
+import com.ramanclasses.services.StatBoxServiceImpl;
 
 public class Util {
 
@@ -54,11 +50,11 @@ public class Util {
 	
 	public static void setStatBoxParameters(ModelAndView modelandview,List<StatBox> statBox) {
 		// TODO Auto-generated method stub
-		StatBoxDaoImpl statBoxDao = new StatBoxDaoImpl();
+		
 		if(statBox!=null){
 			int totalReportsPerWeek=0;
 			totalReportsPerWeek = statBox.size();
-			int totalRegistredStudents = statBoxDao.getCountTotalRegisteredStudents();
+			int totalRegistredStudents = StatBoxServiceImpl.getCountTotalRegisteredStudents();
 			modelandview.addObject(Constants.REGISTRED_USERS, totalRegistredStudents);
 			modelandview.addObject(Constants.COUNT, totalReportsPerWeek);
 		}
@@ -66,6 +62,5 @@ public class Util {
 			modelandview.addObject(Constants.COUNT, "Unknown");
 		}
 	}
-
 	
 }

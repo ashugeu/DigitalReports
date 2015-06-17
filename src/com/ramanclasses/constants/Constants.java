@@ -16,6 +16,7 @@ public class Constants {
 	public static final String WRONG_USERNAME_PASSWORD = "wrongUserPass";
 	public static final String COUNT = "count";
 	public static final String REGISTRED_USERS = "registredStudents";
+	public static final String FALSE = "false";
 	
 }
 

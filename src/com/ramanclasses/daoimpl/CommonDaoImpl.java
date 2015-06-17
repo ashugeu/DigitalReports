@@ -6,8 +6,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import org.springframework.jdbc.core.simple.SimpleJdbcDaoSupport;
-import org.springframework.jdbc.core.support.JdbcDaoSupport;
-
 
 import com.ramanclasses.reportsql.UserSql;
 import com.ramanclasses.dao.CommonDao;
@@ -91,7 +89,7 @@ public class CommonDaoImpl extends SimpleJdbcDaoSupport implements CommonDao{
 		return user;
 	}
 
-	public void setLastLogin(Long id) {
+	public boolean setLastLogin(Long id) {
 		// TODO Auto-generated method stub
 		String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
 		Object [] params = new Object [] {timestamp,id};
@@ -100,10 +98,12 @@ public class CommonDaoImpl extends SimpleJdbcDaoSupport implements CommonDao{
 		try
 		{
 			getJdbcTemplate().update(UserSql.UPADTE_LAST_LOGIN,params,types);
+			return true;
 		}catch(Exception e)
 		{
 			System.out.println(e.getMessage());
 		}
+		return false;
 	}
 
 

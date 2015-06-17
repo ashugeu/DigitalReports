@@ -18,7 +18,7 @@
               <div class="small-box bg-yellow">
                 <div class="inner">
                   <h3>${registredStudents}</h3>
-                  <p>Students Submitted Reports</p>
+                  <p>Total Registered Students</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-person-add"></i>
