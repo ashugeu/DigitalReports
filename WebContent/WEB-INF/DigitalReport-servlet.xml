@@ -13,6 +13,17 @@
                            
    
 	<bean id="HandlerMapping" class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
+	<bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+			 <prop key="addFields.rpc">addAttributeController</prop>
+			 </props>
+		</property>
+	</bean>
+	
+	<bean id="addAttributeController" class="com.ramanclasses.controller.AddAttributesController">
+		<property name="isAddFieldActive" value="1"/>
+	</bean>
 	
 	<mvc:resources mapping="/resources/**" location="/resources/mytheme/" />
 	<mvc:view-controller path="/" view-name="login"/>

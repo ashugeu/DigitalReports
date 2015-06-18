@@ -26,6 +26,7 @@ public class AddAttributesController implements Controller{
 	private UserDetail userDetail;
     private List<StatBox> statBox;
     private ModelAndView modelandview;
+    private int isAddFieldActive=0;
 	
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request,
@@ -36,7 +37,9 @@ public class AddAttributesController implements Controller{
     	int u_id = Integer.parseInt(request.getParameter("user"));
     	int page_id = Integer.parseInt(request.getParameter("id"));
     	
-    	
+    	if(isAddFieldActive==1){
+    		//add code for adding field to DB
+    	}
     	if(page_id==101){
     		try{
     			modelandview =new ModelAndView("editStudentForm");
@@ -57,6 +60,7 @@ public class AddAttributesController implements Controller{
 	    		System.out.println(ex.getMessage());
 	    	}
     	}
+    	
     	addHeaderAndLeftColumnAttributes(modelandview,u_id);
     	return modelandview;
 	}
@@ -64,6 +68,7 @@ public class AddAttributesController implements Controller{
 		// TODO Auto-generated method stub
 		try{
 			User user = CommonServiceImpl.getUserById(u_id);
+			modelandview.addObject(Constants.USER,user.getId());
 			userDetail = AdminServiceImpl.getUserDetail(user.getEmail());
 			statBox = (List<StatBox>) StatBoxServiceImpl.getStatBoxDetails(user.getId());
 			modelandview.addObject(Constants.USER,user.getId());
@@ -78,5 +83,7 @@ public class AddAttributesController implements Controller{
 		return StudentFormServiceImpl.getStudentFormFields(u_id);
 	}
 	
-
+	public void setIsAddFieldActive(int isAddFieldActive) {
+		this.isAddFieldActive = isAddFieldActive;
+	}
 }
