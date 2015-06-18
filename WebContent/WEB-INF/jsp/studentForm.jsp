@@ -7,9 +7,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-<c:forEach var="i" begin="1" end="5">
-   ${studentFormFields.field} <c:out value="${i}"/><p>
-</c:forEach>
-
+<div class="col-md-4 col-md-offset-4">
+<form action="#" method="post">
+	<c:forEach var="i" begin="0" end="${fn:length(studentFormFields)-1}">
+	   <div class="form-group">
+	   	 <label for="exampleInputEmail1">${studentFormFields[i].field}</label>
+	   	 <input type="${studentFormFields[i].type}"  class="form-control" name="${studentFormFields[i].field}" placeholder="${studentFormFields[i].field}"/><br>
+	   </div>	
+	</c:forEach>
+	<input type="submit"/>
+</form>
+</div>
 </body>
 </html>
+

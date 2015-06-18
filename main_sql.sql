@@ -68,8 +68,11 @@ FOREIGN KEY (u_id)
 );
 ALTER TABLE studentInfoFields AUTO_INCREMENT=1001;
 
-INSERT INTO studentInfoFields (u_id,field) values (1,'Name'); 
-INSERT INTO studentInfoFields (u_id,field) values (1,'Age'); 
-INSERT INTO studentInfoFields (u_id,field) values (1,'Batch'); 
-INSERT INTO studentInfoFields (u_id,field) values (1,'College Name'); 
-INSERT INTO studentInfoFields (u_id,field) values (1,'Joining Date');
+INSERT INTO studentInfoFields (u_id,field,type) values (1,'Name','text'); 
+INSERT INTO studentInfoFields (u_id,field,type) values (1,'Age','number'); 
+INSERT INTO studentInfoFields (u_id,field,type) values (1,'Batch','text'); 
+INSERT INTO studentInfoFields (u_id,field,type) values (1,'College Name','text'); 
+INSERT INTO studentInfoFields (u_id,field,type) values (1,'Joining Date','date');
+
+
+alter table studentInfoFields add type varchar(20) NOT NULL;

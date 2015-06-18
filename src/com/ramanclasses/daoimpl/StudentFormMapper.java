@@ -14,10 +14,12 @@ public class StudentFormMapper implements RowMapper {
 	public Object mapRow(ResultSet rs, int rownum) throws SQLException {
 		// TODO Auto-generated method stub
 		String field = rs.getString("field");
+		String type = rs.getString("type");
 		
 		StudentForm model = new StudentForm();
 		
 		model.setField(field);
+		model.setType(type);
 		
 		return model;
 	}
