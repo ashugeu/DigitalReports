@@ -19,7 +19,9 @@
 
     <bean name="/loginValidate.htm" class="com.ramanclasses.controller.LoginController"/>
     <bean name="/addStudent.htm" class="com.ramanclasses.controller.AddAttributesController"/>
-		
+	<bean name="/editStudentForm.htm" class="com.ramanclasses.controller.AddAttributesController"/>
+	
+	
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">  
         <property name="prefix" value="/WEB-INF/jsp/" />  
         <property name="suffix" value=".jsp" />  

@@ -18,4 +18,9 @@ public class StudentFormServiceImpl {
 		return studentFormDao.getStudentFormFields(u_id);
 	}
 
+	public static List<String> getAllFieldsById(int u_id) {
+		// TODO Auto-generated method stub
+		return studentFormDao.getAllFieldsById(u_id);
+	}
+
 }

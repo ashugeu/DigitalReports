@@ -33,23 +33,45 @@ public class AddAttributesController implements Controller{
 		// TODO Auto-generated method stub
     	ApplicationContext context = 
     	    		new ClassPathXmlApplicationContext("Beans.xml");
-    	
     	int u_id = Integer.parseInt(request.getParameter("user"));
-    	try{
-    		List<StudentForm> studentForm = getStudentFormData(u_id);
-    		User user = CommonServiceImpl.getUserById(u_id);
-    		userDetail = AdminServiceImpl.getUserDetail(user.getEmail());
-    		statBox = (List<StatBox>) StatBoxServiceImpl.getStatBoxDetails(user.getId());
-    		modelandview =new ModelAndView("addStudent");
-    		modelandview.addObject(Constants.USER,user.getId());
-    		Util.setParameters(modelandview,userDetail);
-    		Util.setStatBoxParameters(modelandview, statBox);
-    		modelandview.addObject(Constants.STUDENT_FORM_FIELDS,studentForm);
+    	int page_id = Integer.parseInt(request.getParameter("id"));
+    	
+    	
+    	if(page_id==101){
+    		try{
+    			modelandview =new ModelAndView("editStudentForm");
+        		List<String> fields = StudentFormServiceImpl.getAllFieldsById(u_id);
+        		modelandview.addObject(Constants.STUDENT_FORM_FIELDS,fields);
+    		}catch(Exception ex){
+    			System.out.println(ex.getMessage());
+    		}
+    		
     	}
-    	catch(Exception ex){
-    		System.out.println(ex.getMessage());
+    	else if(page_id==102){
+	    	try{
+	    		modelandview =new ModelAndView("addStudent");
+	    		List<StudentForm> studentForm = getStudentFormData(u_id);
+	    		modelandview.addObject(Constants.STUDENT_FORM_FIELDS,studentForm);
+	    	}
+	    	catch(Exception ex){
+	    		System.out.println(ex.getMessage());
+	    	}
     	}
+    	addHeaderAndLeftColumnAttributes(modelandview,u_id);
     	return modelandview;
+	}
+	private void addHeaderAndLeftColumnAttributes(ModelAndView modelandview,int u_id) {
+		// TODO Auto-generated method stub
+		try{
+			User user = CommonServiceImpl.getUserById(u_id);
+			userDetail = AdminServiceImpl.getUserDetail(user.getEmail());
+			statBox = (List<StatBox>) StatBoxServiceImpl.getStatBoxDetails(user.getId());
+			modelandview.addObject(Constants.USER,user.getId());
+			Util.setParameters(modelandview,userDetail);
+			Util.setStatBoxParameters(modelandview, statBox);
+		}catch(Exception ex){
+			System.out.println(ex.getMessage());
+		}
 	}
 	private List<StudentForm> getStudentFormData(int u_id) {
 		// TODO Auto-generated method stub

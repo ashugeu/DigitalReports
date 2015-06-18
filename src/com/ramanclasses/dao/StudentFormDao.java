@@ -8,4 +8,6 @@ public interface StudentFormDao {
 
 	List<StudentForm> getStudentFormFields(int u_id);
 
+	List<String> getAllFieldsById(int u_id);
+
 }
