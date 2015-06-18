@@ -13,4 +13,5 @@ public interface UserSql {
 		public static final String GET_STAT_BOX = "select * from statbox where u_id=?";
 		public static final String COUNT_TOTAL_STUDENTS = "select count(distinct(u_id)) from users";
 		public static final String GET_ADD_STUDENT_FORM_FIELD = "select field from studentInfoFields where u_id=?";
+		public static final String GET_USER_BY_ID = "select * from users where u_id=?";
 }

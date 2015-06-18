@@ -30,5 +30,10 @@ public class CommonServiceImpl {
 	public static void setCommonDao(CommonDao commonDao) {
 		CommonServiceImpl.commonDao = commonDao;
 	}
+
+	public static User getUserById(int u_id) {
+		// TODO Auto-generated method stub
+		return commonDao.getUserById(u_id);
+	}
 	
 }

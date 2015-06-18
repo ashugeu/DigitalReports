@@ -12,5 +12,6 @@ public interface CommonDao {
 	public User getUser(String email);
 	public boolean setLastLogin(Long id);
 	public Long getUserId(String email);
+	public User getUserById(int u_id);
 	
 }

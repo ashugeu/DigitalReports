@@ -106,5 +106,23 @@ public class CommonDaoImpl extends SimpleJdbcDaoSupport implements CommonDao{
 		return false;
 	}
 
+	@Override
+	public User getUserById(int u_id) {
+		// TODO Auto-generated method stub
+		Object [] params = new Object [] {u_id};
+		int [] types = new int [] {Types.NUMERIC};
+		
+		User user=null;
+		try
+		{
+			user = (User)getJdbcTemplate().queryForObject(UserSql.GET_USER_BY_ID, params, types, new UserMapper());
+		}catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+		}
+		
+		return user;
+	}
+
 
 }
